@@ -1,2 +1,2 @@
 # MAAV
-Working repository for Michigan Autonomous Ariel Vehicles
+Working personal repo for Michigan Autonomous Ariel Vehicles
