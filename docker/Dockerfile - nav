@@ -1,27 +1,19 @@
-#Dockerfile for nav code, excludes simulator and documentation
-FROM ubuntu:18.04
+FROM ubuntu:16.04
 
 MAINTAINER John Calso <jcalso@umich.edu>
 
-RUN mkdir -p /nav
+RUN mkdir -p /software
 
-WORKDIR /nav
+RUN apt-get update && apt-get upgrade
 
-COPY . /nav/
+WORKDIR /software
 
-RUN apt-get update
+COPY . /software/
 
-RUN apt-get install -y \
-    cmake \
-    libboost-program-options-dev \
-    libboost-test-dev \
-    libeigen3-dev \
-    libev-dev \
-    libgtkmm-3.0-dev \
-    libopencv-dev \
-    libusb-1.0-0-dbg \
-    libusb-1.0-0-dev \
-    libusb-1.0-doc \
-    libyaml-cpp-dev \
-    qtbase5-dev 
-    #TO DO: Add ZCM and g++-7
+#COPY scripts/setup.sh .
+
+#RUN chmod +x scripts/setup.sh
+
+#RUN scripts/setup.sh
+
+#ENTRYPOINT sudo scripts/setup.sh; sudo cripts/install/install-g++7.sh; /bin/bash
